@@ -1,32 +1,32 @@
 package ru.yandex.praktikum;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
-import org.junit.Before;
-import org.junit.After;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestTemplate {
 
-    protected WebDriver driver;
+    protected static  WebDriver driver;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
+        /*
         // Инициализировать WebDriverManager для chrome
         WebDriverManager.chromedriver().setup();
         // Создать объект драйвера chrome
         driver = new ChromeDriver();
-        /*
+        */
         // Инициализировать WebDriverManager для firefox
         WebDriverManager.firefoxdriver().setup();
         // Создать объект драйвера firefox
         driver = new FirefoxDriver();
-         */
     }
 
-    @After
-    public void TearDown() {
+    @AfterClass
+    public static void tearDown() {
         // Закрыть браузер
         driver.quit();
     }

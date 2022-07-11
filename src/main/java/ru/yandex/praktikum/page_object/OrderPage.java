@@ -114,7 +114,7 @@ public class OrderPage {
     }
 
     public void confirmOrder() {
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmOrderWindow));
         driver.findElement(confirmButton).click();
         driver.findElement(orderText);

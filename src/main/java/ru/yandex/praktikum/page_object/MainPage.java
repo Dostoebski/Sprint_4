@@ -94,7 +94,7 @@ public class MainPage {
     }
 
     public void clickLowerOrderButton() {
-        new WebDriverWait(driver, 3)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.elementToBeClickable(lowerOrderButton));
         driver.findElement(lowerOrderButton).click();
     }
