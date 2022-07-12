@@ -38,11 +38,13 @@ public class OrderPage {
     private final By confirmOrderWindow = By.className("Order_Modal__YZ-d3");
     // Кнопка Да в окне подтверждения заказа
     private final By confirmButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
-    // Номер заказа
-    private final By statusButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']");
+    // Текст с номером заказа
+    private final By orderText = By.className("Order_Text__2broi");
+
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
+
     // заполнение полей
     public void setName(String name) {
         driver.findElement(nameField).sendKeys(name);
@@ -113,13 +115,17 @@ public class OrderPage {
         clickOnOrderButton();
     }
 
+    // Подтвердить заказ
     public void confirmOrder() {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmOrderWindow));
         driver.findElement(confirmButton).click();
     }
 
-    public boolean statusButtonIsDisplayed() {
-        return driver.findElement(statusButton).isDisplayed();
+    // Проверить, сформировался ли номер заказа
+    public boolean isOrderNumberCreated() {
+        String orderNumber = driver.findElement(orderText).getText();
+        orderNumber = orderNumber.replaceAll("[^0-9]","");
+        return orderNumber.length() > 0;
     }
 }

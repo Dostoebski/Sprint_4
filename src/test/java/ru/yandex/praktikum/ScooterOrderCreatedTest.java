@@ -52,7 +52,7 @@ public class ScooterOrderCreatedTest extends TestTemplate {
         orderPage.setPersonData(name, surname, address, metroStation, phoneNumber);
         orderPage.setOrderData(deliveryDate, rentTerm, color, comment);
         orderPage.confirmOrder();
-        Assert.assertTrue(orderPage.statusButtonIsDisplayed());
+        Assert.assertTrue(orderPage.isOrderNumberCreated());
     }
 
     @Parameterized.Parameters
