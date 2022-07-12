@@ -6,16 +6,19 @@ import ru.yandex.praktikum.page_object.MainPage;
 import org.junit.Test;
 
 public class FAQOnMainPageTest extends TestTemplate {
+
     private static MainPage mainPage;
+
     @BeforeClass
     public static void commonSteps() {
         // Создать объект класса главной страницы
         mainPage = new MainPage(driver);
         // Выполнить шаги
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        mainPage.clickOnCookieConfirmButton();
         mainPage.scrollToFAQ();
     }
-    // Проверка первого вопроса
+
     @Test
     public void answerTextOnFirstQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -24,7 +27,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnFirstQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getFirstAnswerText());
     }
-    // Проверка второго вопроса
+
     @Test
     public void answerTextOnSecondQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -34,7 +37,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnSecondQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getSecondAnswerText());
     }
-    // Проверка третьего вопроса
+
     @Test
     public void answerTextOnThirdQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -46,7 +49,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnThirdQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getThirdAnswerText());
     }
-    // Проверка четвертого вопроса
+
     @Test
     public void answerTextOnFourthQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -55,7 +58,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnFourthQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getFourthAnswerText());
     }
-    // Проверка пятого вопроса
+
     @Test
     public void answerTextOnFifthQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -65,7 +68,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnFifthQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getFifthAnswerText());
     }
-    // Проверка шестого вопроса
+
     @Test
     public void answerTextOnSixthQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -76,7 +79,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnSixthQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getSixthAnswerText());
     }
-    // Проверка седьмого вопроса
+
     @Test
     public void answerTextOnSeventhQuestionTest() {
         // Задать ожидаемый текст ответа
@@ -86,7 +89,7 @@ public class FAQOnMainPageTest extends TestTemplate {
         mainPage.clickOnSeventhQuestion();
         Assert.assertEquals(expectedTextAnswer, mainPage.getSeventhAnswerText());
     }
-    // Проверка восьмого вопроса
+
     @Test
     public void answerTextOnEighthQuestionTest() {
         // Задать ожидаемый текст ответа

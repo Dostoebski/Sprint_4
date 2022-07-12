@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class MainPage {
     // Объект драйвера
     private final WebDriver driver;
@@ -40,6 +42,8 @@ public class MainPage {
     private final By upperOrderButton = By.xpath("//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']");
     // Кнопка Заказать внизу страницы
     private final By lowerOrderButton = By.xpath("//div[@class='Home_FinishButton__1_cWm']/button[text()='Заказать']");
+    // Кнопка подтверждения использования куки
+    private final By rccConfirmButton = By.id("rcc-confirm-button");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -90,45 +94,71 @@ public class MainPage {
     }
 
     public void clickUpperOrderButton() {
+        waitForElementToBeClickable(upperOrderButton);
         driver.findElement(upperOrderButton).click();
     }
 
+    public void clickOnCookieConfirmButton() {
+        List<WebElement> cookieConfirmButton = driver.findElements(rccConfirmButton);
+        if (cookieConfirmButton.size() > 0) {
+            cookieConfirmButton.get(0).click();
+        }
+    }
+
     public void clickLowerOrderButton() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.elementToBeClickable(lowerOrderButton));
+        waitForElementToBeClickable(lowerOrderButton);
         driver.findElement(lowerOrderButton).click();
     }
 
-    // Геттеры
+    // ожидания
+    public void waitForElementToBeVisible(By elementLocator) {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+    }
+
+    public void waitForElementToBeClickable(By elementLocator) {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+    }
+
+    // Геттеры текста ответов
     public String getFirstAnswerText() {
+        waitForElementToBeVisible(firstAnswerText);
         return driver.findElement(firstAnswerText).getText();
     }
 
     public String getSecondAnswerText() {
+        waitForElementToBeVisible(secondAnswerText);
         return driver.findElement(secondAnswerText).getText();
     }
 
     public String getThirdAnswerText() {
+        waitForElementToBeVisible(thirdAnswerText);
         return driver.findElement(thirdAnswerText).getText();
     }
 
     public String getFourthAnswerText() {
+        waitForElementToBeVisible(fourthAnswerText);
         return driver.findElement(fourthAnswerText).getText();
     }
 
     public String getFifthAnswerText() {
+        waitForElementToBeVisible(fifthAnswerText);
         return driver.findElement(fifthAnswerText).getText();
     }
 
     public String getSixthAnswerText() {
+        waitForElementToBeVisible(sixthAnswerText);
         return driver.findElement(sixthAnswerText).getText();
     }
 
     public String getSeventhAnswerText() {
+        waitForElementToBeVisible(seventhAnswerText);
         return driver.findElement(seventhAnswerText).getText();
     }
 
     public String getEighthAnswerText() {
+        waitForElementToBeVisible(eighthAnswerText);
         return driver.findElement(eighthAnswerText).getText();
     }
 

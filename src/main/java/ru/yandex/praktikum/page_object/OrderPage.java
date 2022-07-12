@@ -39,7 +39,7 @@ public class OrderPage {
     // Кнопка Да в окне подтверждения заказа
     private final By confirmButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
     // Номер заказа
-    private final By orderText = By.className("Order_Text__2broi");
+    private final By statusButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']");
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -117,6 +117,9 @@ public class OrderPage {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmOrderWindow));
         driver.findElement(confirmButton).click();
-        driver.findElement(orderText);
+    }
+
+    public boolean statusButtonIsDisplayed() {
+        return driver.findElement(statusButton).isDisplayed();
     }
 }
